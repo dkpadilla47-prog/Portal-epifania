@@ -884,6 +884,8 @@ footer{background:#3B2F2A;color:#FBF6EE;--ivory:#FBF6EE;--ash:#D9CBB8;--slate:#B
     <p>No solicitamos información clínica, diagnósticos ni datos de salud. Te pedimos no incluirlos en tus mensajes.</p>
     <h2>Muro de la comunidad</h2>
     <p>Si compartes un mensaje en el muro, guardamos tu seudónimo y el texto que escribas para revisarlo y, si cumple las normas, publicarlo. Te pedimos no incluir nombres reales ni datos de otras personas. Puedes pedir que retiremos tu mensaje escribiendo a portalepifania07@gmail.com. El muro es solo para personas mayores de edad.</p>
+    <h2>Estadísticas de uso</h2>
+    <p>Si lo aceptas en el aviso que aparece al entrar, usamos Google Analytics para medir las visitas de forma agregada (páginas vistas, tipo de dispositivo y país). No recogemos tu nombre ni datos de salud con esa herramienta, y puedes rechazarla sin perder ningún contenido.</p>
     <h2>Para qué los usamos</h2>
     <ul><li>Responder tus mensajes.</li><li>Darte acceso al espacio de comunidad.</li></ul>
     <p>No vendemos ni compartimos tus datos con terceros con fines comerciales.</p>
@@ -1129,6 +1131,32 @@ footer{background:#3B2F2A;color:#FBF6EE;--ivory:#FBF6EE;--ash:#D9CBB8;--slate:#B
     document.title=(hash==='home'||!h1)?TITLES.home:h1.textContent+' — Portal Epifanía';
   }
   window.addEventListener('hashchange',marcarNav); marcarNav();
+</script>
+<div id="statsBanner" role="dialog" aria-label="Estadísticas de uso" style="display:none;position:fixed;left:16px;right:16px;bottom:16px;max-width:560px;margin:0 auto;background:#FFFDF8;border:1px solid #E3D3BC;border-radius:16px;padding:16px 18px;box-shadow:0 10px 30px rgba(60,40,20,.2);z-index:60;font-size:15px;color:#3B2F2A">
+  <p style="margin:0 0 12px">¿Nos ayudas a mejorar? Usamos estadísticas anónimas de visitas. No pedimos datos personales.</p>
+  <button id="stSi" type="button" style="padding:10px 18px;border:0;border-radius:12px;background:#B4562E;color:#fff;font:inherit;cursor:pointer">Aceptar</button>
+  <button id="stNo" type="button" style="padding:10px 18px;border:1.5px solid #3B2F2A;border-radius:12px;background:none;color:#3B2F2A;font:inherit;cursor:pointer;margin-left:8px">No, gracias</button>
+</div>
+<script>
+/* Google Tag Manager (contenedor GTM-M3KTP8GN): se carga solo si la persona acepta las estadísticas. */
+(function(){
+  var GTM_ID='GTM-M3KTP8GN', KEY='pe_stats';
+  function guardar(v){ try{ localStorage.setItem(KEY,v); }catch(e){} }
+  function cargar(){
+    window.dataLayer=window.dataLayer||[];
+    dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+    var s=document.createElement('script'); s.async=true; s.src='https://www.googletagmanager.com/gtm.js?id='+GTM_ID; document.head.appendChild(s);
+    function pv(){ dataLayer.push({event:'virtual_page_view',page_path:'/'+(location.hash||'#home'),page_title:document.title}); }
+    pv(); window.addEventListener('hashchange',pv);
+  }
+  var v=null; try{ v=localStorage.getItem(KEY); }catch(e){}
+  if(v==='si'){ cargar(); }
+  else if(v!=='no'){
+    var b=document.getElementById('statsBanner'); b.style.display='block';
+    document.getElementById('stSi').onclick=function(){ guardar('si'); b.style.display='none'; cargar(); };
+    document.getElementById('stNo').onclick=function(){ guardar('no'); b.style.display='none'; };
+  }
+})();
 </script>
 </body>
 </html>
