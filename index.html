@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FBF6EE">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E🕯️%3C/text%3E%3C/svg%3E">
+<meta property="og:title" content="Portal Epifanía — Acompañamiento en salud mental">
+<meta property="og:description" content="Un espacio cálido y libre de estigma para acompañarte.">
+<title>Portal Epifanía — Acompañamiento en salud mental</title>
+<meta name="description" content="Portal Epifanía: espacio cálido y libre de estigma para el acompañamiento emocional y la psicoeducación en salud mental, en español.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Young+Serif&family=Caveat:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --canvas:#171721; --card:#1e1e2a; --btn2:#272735; --slate:#70707d; --mist:#e2e3ed;
+  --ash:#c3c3cc; --ivory:#ededf3; --cobalt:#5266eb; --white:#ffffff; --dawn:#E3A94B; --dawn-deep:#C4824A;
+  color-scheme: dark;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;font-family:'Figtree',sans-serif;background:var(--canvas);color:var(--ivory);}
+h1,h2,h3{font-family:'Figtree',sans-serif;font-weight:480;margin:0;letter-spacing:0.015em;}
+p{margin:0;line-height:1.5;color:var(--ivory);}
+a{text-decoration:none;color:inherit;cursor:pointer;}
+img,svg{max-width:100%;display:block;}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px;}
+
+/* NAV */
+header{position:sticky;top:0;z-index:50;background:rgba(23,23,33,0.75);backdrop-filter:blur(14px);
+  padding-top:env(safe-area-inset-top,0px);border-bottom:1px solid rgba(226,227,237,0.08);}
+nav{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1200px;margin:0 auto;}
+.logo{display:flex;align-items:center;gap:10px;color:var(--ivory);font-weight:480;font-size:16px;}
+.logo .mark{width:30px;height:30px;border-radius:40px;background:var(--cobalt);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:600;}
+.navlinks{display:flex;align-items:center;gap:6px;font-size:14px;}
+.navlinks a{padding:8px 16px;border-radius:40px;color:var(--ivory);font-weight:400;}
+.navlinks a:hover{background:var(--btn2);}
+.navlinks .pillcta{background:var(--cobalt);color:#fff;padding:10px 20px;margin-left:8px;}
+.navlinks .pillcta:hover{background:var(--cobalt);opacity:.9;}
+.menu-btn{display:none;background:none;border:none;color:var(--ivory);font-size:22px;cursor:pointer;}
+@media(max-width:860px){
+  .navlinks{position:absolute;top:100%;left:0;right:0;background:var(--canvas);flex-direction:column;align-items:stretch;gap:0;
+    max-height:0;overflow:hidden;transition:max-height .25s ease;border-bottom:1px solid rgba(226,227,237,0.08);}
+  .navlinks.open{max-height:420px;}
+  .navlinks a{padding:14px 24px;border-radius:0;border-top:1px solid rgba(226,227,237,0.08);}
+  .navlinks .pillcta{margin:14px 24px;}
+  .menu-btn{display:block;}
+}
+
+/* BUTTONS */
+.btn{display:inline-block;padding:14px 28px;border-radius:32px;font-size:16px;font-weight:420;cursor:pointer;border:none;
+  transition:transform .15s ease, opacity .15s ease;}
+.btn:active{transform:scale(0.96);}
+.btn-primary{background:var(--cobalt);color:#fff;}
+.btn-primary:hover{opacity:.9;}
+.btn-ghost{background:transparent;border:1px solid var(--ivory);color:var(--ivory);}
+.btn-ghost:hover{background:var(--btn2);}
+
+/* HERO */
+.hero{position:relative;background:var(--canvas);overflow:hidden;min-height:86vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;padding:120px 24px 64px;}
+.hero::before{content:"";position:absolute;top:-340px;left:50%;transform:translateX(-50%);
+  width:900px;height:900px;border-radius:50%;
+  background:radial-gradient(circle, rgba(82,102,235,0.22) 0%, rgba(82,102,235,0) 62%);}
+.hero .inner{position:relative;}
+.hero .eyebrow{color:var(--ash);font-size:12px;letter-spacing:0.12em;font-weight:480;text-transform:uppercase;
+  opacity:0;animation:fadeUp .7s ease .1s forwards;}
+.hero h1{color:var(--ivory);font-size:clamp(34px,5.5vw,65px);line-height:1.1;letter-spacing:0.01em;max-width:780px;margin:18px auto 16px;
+  opacity:0;animation:fadeUp .7s ease .28s forwards;}
+.hero h1 em{color:var(--cobalt);font-style:normal;}
+.hero p{color:var(--ash);font-size:18px;font-weight:480;max-width:520px;margin:0 auto 34px;
+  opacity:0;animation:fadeUp .7s ease .46s forwards;}
+.hero .btn-primary{opacity:0;animation:fadeUp .7s ease .64s forwards, pulseGlow 2.6s ease-in-out 1.8s infinite;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+@keyframes pulseGlow{0%,100%{box-shadow:0 0 0 0 rgba(82,102,235,0.45);}50%{box-shadow:0 0 0 12px rgba(82,102,235,0);}}
+
+/* PAGES */
+.page{display:none;}
+.page.active{display:block;}
+.pagehead{background:var(--canvas);padding:150px 24px 56px;text-align:center;}
+.pagehead .eyebrow{color:var(--ash);font-size:12px;letter-spacing:0.12em;font-weight:480;text-transform:uppercase;}
+.pagehead h1{color:var(--ivory);font-size:clamp(28px,4.5vw,49px);margin:14px auto 0;max-width:680px;}
+.pagehead p{color:var(--ash);font-size:16px;max-width:560px;margin:16px auto 0;}
+
+.section{padding:72px 24px;}
+.section .head{text-align:center;max-width:620px;margin:0 auto 48px;}
+.section .eyebrow2{color:var(--ash);font-size:12px;font-weight:480;letter-spacing:0.12em;text-transform:uppercase;}
+.section h2{font-size:clamp(26px,3.5vw,42px);margin-top:10px;}
+
+/* CARDS */
+.card{background:var(--card);border-radius:12px;padding:32px;}
+.cards4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1160px;margin:0 auto;}
+@media(max-width:920px){.cards4{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.cards4{grid-template-columns:1fr;}}
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1080px;margin:0 auto;}
+@media(max-width:820px){.cards3{grid-template-columns:1fr;}}
+.cards2{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1080px;margin:0 auto;}
+@media(max-width:760px){.cards2{grid-template-columns:1fr;}}
+.svc .ic{width:40px;height:40px;border-radius:12px;background:var(--cobalt);margin-bottom:18px;}
+.svc h3{font-size:18px;margin-bottom:10px;}
+.svc p{font-size:14px;color:var(--ash);}
+.card ul{margin:14px 0 0;padding-left:18px;color:var(--ash);font-size:13.5px;line-height:1.7;}
+
+/* MISIÓN/VISIÓN + VALORES */
+.badge{display:inline-block;font-size:10.5px;font-weight:530;letter-spacing:0.08em;text-transform:uppercase;
+  background:var(--btn2);color:var(--ivory);padding:4px 12px;border-radius:40px;margin-bottom:12px;}
+.founder{max-width:680px;margin:50px auto 0;}
+.founder .ava{width:56px;height:56px;border-radius:50%;background:var(--cobalt);flex-shrink:0;display:flex;
+  align-items:center;justify-content:center;font-weight:600;color:#fff;font-size:18px;}
+.founder{display:flex;gap:18px;align-items:center;}
+.founder h4{font-size:15.5px;margin-bottom:4px;font-weight:480;}
+.founder p{color:var(--ash);font-size:13px;}
+
+/* BLOG */
+.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1160px;margin:0 auto;}
+@media(max-width:820px){.posts{grid-template-columns:1fr;}}
+.post .ph{height:120px;border-radius:12px 12px 0 0;background:var(--btn2);}
+.post{border-radius:12px;overflow:hidden;background:var(--card);}
+.post .pc{padding:24px;}
+.post .cat{color:var(--ash);font-size:11px;font-weight:530;letter-spacing:0.08em;text-transform:uppercase;}
+.post h4{font-size:17px;margin:10px 0 8px;font-weight:480;}
+.post p{font-size:13.5px;color:var(--ash);}
+.soon{opacity:.5;}
+
+/* ARTÍCULOS */
+.readmore{display:inline-block;margin-top:14px;color:var(--ivory);font-size:13px;font-weight:480;}
+.post{transition:transform .18s ease;}
+.post:hover{transform:translateY(-3px);}
+.article{max-width:720px;margin:0 auto;padding:8px 24px 72px;}
+.article p{font-size:17px;line-height:1.75;color:var(--ivory);font-weight:400;margin-bottom:22px;}
+.article h2{font-size:24px;margin:40px 0 14px;}
+.article ul,.article ol{color:var(--ivory);font-size:17px;line-height:1.75;padding-left:22px;margin:0 0 22px;}
+.article li{margin-bottom:8px;}
+.article .lead{font-size:19px;color:var(--ash);}
+.article .aside{background:var(--card);border-radius:12px;padding:24px 28px;margin:32px 0;}
+.article .aside p{font-size:14.5px;color:var(--ash);margin:0;}
+.article .endnav{display:flex;gap:12px;flex-wrap:wrap;margin-top:44px;}
+
+/* COMUNIDAD */
+.community{background:var(--card);text-align:center;padding:72px 24px;border-radius:0;}
+.community h2{color:var(--ivory);font-size:clamp(26px,3.5vw,38px);max-width:560px;margin:0 auto 14px;}
+.community p{color:var(--ash);max-width:520px;margin:0 auto 28px;font-size:16px;}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:960px;margin:0 auto 10px;text-align:left;}
+@media(max-width:760px){.steps{grid-template-columns:1fr;}}
+.step{background:var(--btn2);border-radius:12px;padding:24px;}
+.step .n{font-weight:600;font-size:22px;color:var(--cobalt);margin-bottom:10px;}
+.step h4{font-size:15px;margin-bottom:6px;font-weight:480;}
+.step p{color:var(--ash);font-size:13px;}
+.quote{max-width:620px;margin:46px auto 0;text-align:center;font-style:normal;font-weight:480;
+  font-size:19px;color:var(--ivory);}
+
+/* CONTACT */
+.contact{padding:72px 24px;background:var(--canvas);}
+.contact-grid{max-width:720px;margin:0 auto;}
+.field{margin-bottom:16px;}
+.field label{display:block;font-size:13px;font-weight:480;margin-bottom:8px;color:var(--ivory);}
+.field input, .field textarea{width:100%;padding:14px 20px;border-radius:32px;border:1px solid var(--mist);
+  background:transparent;font-family:'Figtree',sans-serif;font-size:14px;color:var(--ivory);}
+.field textarea{resize:vertical;min-height:110px;border-radius:16px;}
+.field input::placeholder,.field textarea::placeholder{color:var(--ash);}
+.note{font-size:12.5px;color:var(--ash);margin-top:16px;}
+#confirm{display:none;background:var(--card);border-radius:12px;padding:32px;text-align:center;}
+#confirm h3{margin-bottom:8px;font-weight:480;}
+#confirm p{color:var(--ash);font-size:14px;}
+
+footer{background:var(--canvas);color:var(--ash);padding:48px 24px 34px;border-top:1px solid rgba(226,227,237,0.08);}
+.foot-grid{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+.foot-brand{color:var(--ivory);font-size:16px;font-weight:480;}
+.foot-links{display:flex;gap:20px;font-size:13px;flex-wrap:wrap;}
+.disclaimer{max-width:1200px;margin:28px auto 0;border-top:1px solid rgba(226,227,237,0.08);padding-top:20px;
+  font-size:12px;color:var(--slate);line-height:1.6;}
+/* ===== ACENTO CÁLIDO (amanecer) + BANNER ===== */
+.hero{min-height:100vh;justify-content:flex-start;padding:112px 24px 300px;}
+.hero::before{display:none;}
+.hero .banner{position:absolute;inset:0;width:100%;height:100%;z-index:0;}
+.hero .inner{z-index:2;}
+.hero .eyebrow{color:var(--dawn);}
+.hero h1 em{color:var(--dawn);}
+.hero p{color:var(--ivory);opacity:0;text-shadow:0 1px 14px rgba(23,23,33,.55);}
+.fog{animation:drift 20s ease-in-out infinite alternate;}
+.fog2{animation-duration:28s;animation-direction:alternate-reverse;}
+@keyframes drift{from{transform:translateX(-40px);}to{transform:translateX(40px);}}
+@media (prefers-reduced-motion:reduce){.fog{animation:none;}.hero .eyebrow,.hero h1,.hero p,.hero .btn-primary{animation-duration:.01s;}}
+.logo .mark{background:var(--dawn);color:var(--canvas);}
+.pagehead{background:radial-gradient(ellipse 70% 130% at 50% 0%, rgba(227,169,75,.16), rgba(227,169,75,0) 70%), var(--canvas);}
+.pagehead .eyebrow,.section .eyebrow2{color:var(--dawn);}
+.svc .ic{background:var(--dawn);}
+.badge{color:var(--dawn);}
+.step .n{color:var(--dawn);}
+.readmore{color:var(--dawn);}
+.post .cat{color:var(--dawn);}
+.founder .ava{background:var(--dawn);color:var(--canvas);}
+.community{background:linear-gradient(180deg,var(--card),#26212b);}
+.card{border-top:2px solid rgba(227,169,75,.35);}
+.article .lead{color:var(--ivory);}
+.article h2{color:var(--dawn);}
+/* ===== TIPOGRAFÍA SERIF (Fraunces) en títulos ===== */
+h1,h2,h3{font-family:'Young Serif',serif;font-weight:500;letter-spacing:-0.005em;}
+.post h4,.step h4,.founder h4,.foot-brand{font-family:'Young Serif',serif;font-weight:500;}
+.logo{font-family:'Young Serif',serif;font-weight:600;font-size:17px;}
+.logo .mark{font-family:'Figtree',sans-serif;}
+.hero h1{line-height:1.08;}
+.hero h1 em{font-style:italic;}
+.quote{font-family:'Young Serif',serif;font-style:italic;font-weight:400;font-size:21px;}
+#confirm h3{font-family:'Young Serif',serif;}
+/* ===== AJUSTES: contacto, portadas del blog, foco visible ===== */
+.contact .head{text-align:center;max-width:620px;margin:0 auto 34px;}
+.contact .eyebrow2{color:var(--dawn);font-size:12px;font-weight:480;letter-spacing:0.12em;text-transform:uppercase;}
+.contact h2{font-size:clamp(26px,3.5vw,42px);margin-top:10px;}
+.post .ph{height:120px;border-radius:0;background:radial-gradient(circle at 72% 125%, rgba(227,169,75,.6), rgba(227,169,75,0) 58%), linear-gradient(160deg,#262a52,#171721);}
+.posts .post:nth-child(3n+2) .ph{background:radial-gradient(circle at 28% 125%, rgba(106,176,150,.55), rgba(106,176,150,0) 58%), linear-gradient(160deg,#1f3a3c,#171721);}
+.posts .post:nth-child(3n) .ph{background:radial-gradient(circle at 50% 125%, rgba(196,130,74,.6), rgba(196,130,74,0) 58%), linear-gradient(160deg,#3a2f4f,#171721);}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--dawn);outline-offset:3px;}
+/* ===== TEMA HOGAR: luz cálida ===== */
+:root{--canvas:#F6EFE3;--card:#FFFBF4;--btn2:#EFE3CF;--slate:#8B7F6E;--mist:#DCCDB5;--ash:#5D6674;--ivory:#1B2634;--cobalt:#E3A94B;color-scheme:light;}
+header,.hero,.pagehead,.community,footer{--canvas:#101B2A;--card:#1B2A3C;--btn2:#243349;--slate:#8E9BAA;--mist:#E6E0D4;--ash:#C7D0DA;--ivory:#F5EFE4;}
+header{background:rgba(16,27,42,.9);}
+.btn-primary,.navlinks .pillcta{background:var(--dawn);color:#0C1C2C;font-weight:530;}
+.btn-primary:hover{background:#EDB95F;opacity:1;}
+@keyframes pulseGlow{0%,100%{box-shadow:0 0 0 0 rgba(227,169,75,.5);}50%{box-shadow:0 0 0 12px rgba(227,169,75,0);}}
+.card,.post,.step{border:1px solid var(--mist);}
+.card{border-radius:20px;box-shadow:0 8px 26px rgba(120,85,35,.08);border-top:2px solid var(--dawn);}
+.post{border-radius:20px;box-shadow:0 8px 26px rgba(120,85,35,.08);}
+.section .eyebrow2,.contact .eyebrow2,.post .cat,.readmore,.article h2{color:#9A4A28;}
+.badge{background:var(--btn2);color:#9A4A28;}
+.community{background:linear-gradient(180deg,#25483F,#1B3630);}
+.community .step{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.14);box-shadow:none;}
+.field input,.field textarea{background:#FFFDF8;}
+.article .aside{border-left:4px solid var(--dawn);border-radius:12px;}
+.hero .banner rect[fill='url(#fade)']{display:none;}
+.helpfab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:60;background:#FFFBF4;color:#1B2634;border:1px solid var(--dawn);border-radius:32px;padding:11px 18px;font-size:14px;font-weight:480;box-shadow:0 8px 24px rgba(16,27,42,.28);display:flex;align-items:center;gap:8px;}
+.helpfab::before{content:'';width:9px;height:9px;border-radius:50%;background:var(--dawn);box-shadow:0 0 0 4px rgba(227,169,75,.3);}
+.on-ayuda .helpfab{display:none;}
+details.faq{background:var(--card);border:1px solid var(--mist);border-radius:16px;padding:18px 22px;margin:0 auto 12px;max-width:760px;}
+details.faq summary{cursor:pointer;font-weight:480;font-size:16px;list-style:none;}
+details.faq summary::-webkit-details-marker{display:none;}
+details.faq summary::after{content:'+';float:right;color:#9A4A28;font-size:20px;line-height:1;}
+details.faq[open] summary::after{content:'–';}
+details.faq p{margin-top:12px;color:var(--ash);font-size:15px;}
+details.faq a,.article a:not(.btn){color:#9A4A28;text-decoration:underline;}
+.helpstrip{max-width:1080px;margin:40px auto 0;background:#25483F;border-radius:20px;padding:26px 30px;display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap;}
+.helpstrip p{color:#F5EFE4;margin:0;font-size:16px;max-width:640px;}
+.tel{font-family:'Young Serif',serif;font-size:36px;color:#9A4A28;font-weight:500;display:block;margin:4px 0 8px;}
+.joinform{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;max-width:720px;margin:28px auto 0;}
+.joinform input{flex:1 1 200px;padding:14px 20px;border-radius:32px;border:1px solid var(--mist);background:rgba(255,255,255,.1);color:var(--ivory);font:inherit;font-size:14px;}
+.joinform input::placeholder{color:var(--ash);}
+
+/* ===== AJUSTES FINALES: hogar cálido ===== */
+body{background:linear-gradient(180deg,#F6EFE3,#F1E7D6);padding-bottom:70px;}
+.hero{min-height:92vh;padding:56px 24px 260px;}
+.pagehead{padding:64px 24px 52px;}
+.hero .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp .7s ease .64s forwards;}
+.hero .btns .btn-primary{opacity:1;animation:pulseGlow 2.6s ease-in-out 1.8s infinite;}
+.hero .btns .btn-ghost{border-color:#F5EFE4;color:#F5EFE4;}
+.hero .btns .btn-ghost:hover{background:rgba(255,255,255,.12);}
+#servicios-home{background:#F1E7D6;}
+.breathe{text-align:center;padding:72px 24px;}
+.breathe .orb{width:150px;height:150px;border-radius:50%;margin:0 auto 26px;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle at 35% 30%,#F6C878,#E3A94B 60%,#C4824A);box-shadow:0 0 60px rgba(227,169,75,.5);
+  animation:breath 10s ease-in-out infinite;color:#1B2634;font-family:'Young Serif',serif;font-size:20px;}
+.breathe .orb span{position:absolute;opacity:0;animation:lbl 10s ease-in-out infinite;}
+.breathe .orb span+span{animation-delay:-5s;}
+@keyframes breath{0%,100%{transform:scale(.7);}40%{transform:scale(1.15);}}
+@keyframes lbl{0%,5%{opacity:0;}15%,35%{opacity:1;}45%,100%{opacity:0;}}
+.breathe p{color:var(--ash);max-width:460px;margin:0 auto;font-size:16px;}
+@media (prefers-reduced-motion:reduce){.breathe .orb,.breathe .orb span{animation:none;}.breathe .orb span:first-child{opacity:1;}}
+.navlinks a[aria-current="page"]:not(.pillcta){background:var(--btn2);}
+.helpfab{max-width:calc(100vw - 32px);}
+@media(max-width:980px){
+  .navlinks{position:absolute;top:100%;left:0;right:0;background:#101B2A;flex-direction:column;align-items:stretch;gap:0;max-height:0;overflow:hidden;transition:max-height .25s ease;}
+  .navlinks.open{max-height:480px;}
+  .navlinks a{padding:14px 24px;border-radius:0;border-top:1px solid rgba(226,227,237,0.08);}
+  .navlinks .pillcta{margin:14px 24px;text-align:center;border-radius:40px;}
+  .menu-btn{display:block;}
+}
+@media(max-width:560px){.card{padding:24px;}.section{padding:56px 20px;}.tel{font-size:32px;}}
+
+/* ===== MURO ===== */
+.muro{max-width:760px;margin:0 auto;}
+.muro .card{margin-bottom:20px;}
+.muro .card ul{font-size:14.5px;color:var(--ash);}
+.muro label.chk{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--ash);margin:4px 0 18px;line-height:1.45;}
+.muro label.chk input{margin-top:3px;width:18px;height:18px;flex-shrink:0;accent-color:#C4824A;}
+.muro .hp{position:absolute;left:-9999px;}
+.muro .cnt{font-size:12px;color:var(--slate);text-align:right;margin-top:4px;}
+#muroCrisis{display:none;background:#25483F;color:#F5EFE4;border-radius:16px;padding:18px 22px;margin-bottom:18px;font-size:15px;line-height:1.5;}
+#muroCrisis a{color:#F6C878;text-decoration:underline;font-weight:530;}
+#muroOk{display:none;background:var(--card);border:1px solid var(--dawn);border-radius:16px;padding:22px;text-align:center;margin-bottom:20px;}
+.msg{background:var(--card);border:1px solid var(--mist);border-radius:20px;padding:22px 24px;margin-bottom:14px;box-shadow:0 8px 26px rgba(120,85,35,.06);}
+.msg p{font-size:16px;line-height:1.65;white-space:pre-wrap;word-break:break-word;}
+.msg .meta{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px;font-size:12.5px;color:var(--slate);}
+.msg .meta strong{color:#9A4A28;font-weight:530;}
+.msg button{background:none;border:none;color:var(--slate);font:inherit;font-size:12.5px;cursor:pointer;text-decoration:underline;padding:4px;}
+.muro-vacio{text-align:center;color:var(--ash);padding:30px 0;}
+.navlinks a{padding:8px 12px;}
+
+/* ===== AUDIOS E INFOGRAFÍAS ===== */
+.aud button.play{margin-top:16px;}
+.aud .st{font-size:15px;color:#9A4A28;font-weight:480;line-height:1.45;margin-top:12px;min-height:22px;}
+.aud details{margin-top:12px;font-size:14px;color:var(--ash);}
+.aud summary{cursor:pointer;color:#9A4A28;font-weight:480;}
+.aud .txt p{margin-top:8px;font-size:14px;color:var(--ash);}
+.ig h3{font-size:21px;margin-bottom:6px;}
+.ig .sub{font-size:14px;color:var(--ash);margin-bottom:20px;}
+.ig .orbs{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:6px 0 16px;}
+.ig .orb2{width:92px;height:92px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(circle at 35% 30%,#F6C878,#E3A94B 65%,#C4824A);color:#1B2634;font-family:'Young Serif',serif;}
+.ig .orb2 b{font-size:30px;line-height:1;font-weight:600;}.ig .orb2 span{font-size:13px;font-family:'Figtree',sans-serif;}
+.ig .row{display:flex;align-items:center;gap:14px;padding:10px 0;border-top:1px solid var(--mist);font-size:15px;}
+.ig .row:first-of-type{border-top:none;}
+.ig .num{width:38px;height:38px;border-radius:50%;background:#25483F;color:#F5EFE4;display:flex;align-items:center;justify-content:center;font-family:'Young Serif',serif;font-size:19px;flex-shrink:0;}
+.ig .chips{display:flex;flex-wrap:wrap;gap:8px;}
+.ig .chip{background:var(--btn2);border:1px solid var(--mist);border-radius:40px;padding:8px 16px;font-size:14px;}
+.ig .foot{font-size:13px;color:var(--slate);margin-top:16px;}
+
+/* ===== REDISEÑO: cálido, hecho a mano ===== */
+:root,header,.pagehead,footer,.community,.contact{--canvas:#FBF6EE;--card:#FFFDF8;--btn2:#F1E4D0;--slate:#8A7968;--mist:#E3D3BC;--ash:#6B5B50;--ivory:#3B2F2A;--cobalt:#B4562E;--dawn:#B4562E;}
+body{background:#FBF6EE;font-family:'Figtree',system-ui,sans-serif;font-size:17px;}
+h1,h2,h3,h4,.logo,.foot-brand,.quote,.tel,#confirm h3,.ig .orb2,.ig .num,.breathe .orb{font-family:'Young Serif',Georgia,serif;font-weight:400;letter-spacing:0;}
+.quote{font-style:normal;font-size:22px;}
+header{background:rgba(251,246,238,.94);border-bottom:1px solid #E3D3BC;}
+.logo{font-size:19px;}.logo .mark{background:#B4562E;}
+.navlinks a[aria-current="page"]:not(.pillcta){background:#F1E4D0;}
+.btn{border-radius:14px;font-weight:500;}
+.btn-primary,.navlinks .pillcta{background:#B4562E;color:#fff;font-weight:500;animation:none;}
+.btn-primary:hover,.navlinks .pillcta:hover{background:#9A4A28;opacity:1;}
+.navlinks .pillcta{border-radius:12px;}
+.btn-ghost{border:1.5px solid #3B2F2A;color:#3B2F2A;}.btn-ghost:hover{background:#F1E4D0;}
+.pagehead .eyebrow,.section .eyebrow2,.contact .eyebrow2,.hand{font-family:'Caveat',cursive;text-transform:none;letter-spacing:0;font-size:25px;font-weight:500;color:#9A4A28;}
+.hand.small{font-size:22px;}
+/* inicio */
+.home-hero{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center;max-width:1120px;margin:0 auto;padding:56px 24px 36px;}
+.hh-text h1{font-size:clamp(36px,5.4vw,62px);line-height:1.08;margin:6px 0 18px;color:#3B2F2A;}
+.hh-text>p{font-size:19px;line-height:1.6;color:var(--ash);max-width:520px;}
+.hh-btns{display:flex;gap:12px;flex-wrap:wrap;margin:26px 0 14px;}
+.textlink{display:inline-block;margin-top:8px;color:#9A4A28;text-decoration:underline;text-underline-offset:4px;font-weight:500;}
+.hh-art svg{width:100%;height:auto;max-width:460px;margin:0 auto;}
+@media(max-width:820px){.home-hero{grid-template-columns:1fr;padding-top:32px;}.hh-art{max-width:320px;margin:0 auto;}}
+.section .head,.contact .head{text-align:left;max-width:1080px;margin:0 auto 32px;}
+.section .head h2{max-width:640px;}
+.steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1080px;margin:0 auto;}
+@media(max-width:820px){.steps3{grid-template-columns:1fr;}}
+.fs{display:block;border-radius:6px 22px 8px 20px;padding:28px;transition:transform .2s;}
+.fs:nth-child(1){background:#F8E3CF;transform:rotate(-.8deg);}.fs:nth-child(2){background:#E3EADB;transform:rotate(.6deg);}.fs:nth-child(3){background:#F5DDD3;transform:rotate(-.4deg);}
+.fs:hover{transform:rotate(0) translateY(-3px);}
+.fs b{font-family:'Caveat',cursive;font-size:38px;font-weight:500;color:#9A4A28;display:block;line-height:1;margin-bottom:6px;}
+.fs h3{font-size:21px;margin-bottom:8px;}.fs p{font-size:15px;color:var(--ash);}
+.pagehead{background:#F4EADB;text-align:left;padding:52px max(24px,calc(50% - 540px)) 40px;}
+.pagehead h1{font-size:clamp(30px,4.6vw,50px);margin:6px 0 0;max-width:720px;color:#3B2F2A;}
+.pagehead p{margin:14px 0 0;max-width:600px;}
+/* tarjetas como notas */
+.card{border:none;box-shadow:none;border-radius:18px 24px 18px 22px;}
+.cards4 .card:nth-child(4n+1),.cards3 .card:nth-child(3n+1),.cards2 .card:nth-child(odd){background:#F8E3CF;}
+.cards4 .card:nth-child(4n+2),.cards3 .card:nth-child(3n+2){background:#E3EADB;}
+.cards4 .card:nth-child(4n+3),.cards2 .card:nth-child(even){background:#F3EBD9;}
+.cards4 .card:nth-child(4n),.cards3 .card:nth-child(3n){background:#F5DDD3;}
+.svc .ic{display:none;}
+.card p{color:var(--ash);}
+.badge{background:rgba(255,255,255,.65);color:#9A4A28;text-transform:none;letter-spacing:0;font-size:13px;font-weight:600;}
+.muro .card,.contact .card{background:#FFFDF8;border:1px solid #E3D3BC;}
+.post{border:none;box-shadow:none;background:#FFFDF8;border:1px solid #E3D3BC;border-radius:18px;}
+.post .ph,.posts .post:nth-child(3n+2) .ph,.posts .post:nth-child(3n) .ph{height:14px;background:#F8E3CF;}
+.posts .post:nth-child(3n+2) .ph{background:#C9D8C2;}.posts .post:nth-child(3n) .ph{background:#EFC9BA;}
+#servicios-home{background:#F4EADB;}
+details.faq{border-radius:14px;background:#FFFDF8;}
+.helpstrip{background:#3F5A4A;border-radius:18px;}
+.community{background:#3F5A4A;color:#FBF6EE;--ivory:#FBF6EE;--ash:#DCE6D6;--mist:rgba(255,255,255,.35);}
+.community .step h4{color:#FBF6EE;}.community .step .n{color:#F6C878;}
+.community .btn-ghost{border-color:#FBF6EE;color:#FBF6EE;}
+.field input,.field textarea{border-radius:12px;background:#FFFDF8;}.field textarea{border-radius:12px;}
+.joinform input{border-radius:12px;}
+.breathe{background:#FFFDF8!important;}
+.article h2{color:#9A4A28;}
+.article .aside{background:#F4EADB;border-left-color:#B4562E;}
+footer{background:#3B2F2A;color:#FBF6EE;--ivory:#FBF6EE;--ash:#D9CBB8;--slate:#B9A895;border-top:none;}
+.helpfab{background:#FFFDF8;border-color:#B4562E;}
+@media(max-width:980px){.navlinks{background:#FBF6EE;}}
+</style>
+</head>
+<body>
+
+<header>
+  <nav aria-label="Principal">
+    <a href="#home" class="logo" data-link><span class="mark"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 21V11a7 7 0 0 1 14 0v10z" fill="none" stroke="#FBF6EE" stroke-width="2"/><circle cx="12" cy="14" r="2.2" fill="#FBF6EE"/></svg></span> Portal Epifanía</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" type="button">☰</button>
+    <div class="navlinks" id="navlinks">
+      <a href="#home" data-link>Inicio</a>
+      <a href="#sobre-nosotros" data-link>Sobre nosotros</a>
+      <a href="#mision-vision" data-link>Misión y visión</a>
+      <a href="#servicios" data-link>Servicios</a>
+      <a href="#multimedia" data-link>Multimedia</a>
+      <a href="#blog" data-link>Blog</a>
+      <a href="#comunidad" data-link>Comunidad</a>
+      <a href="#muro" data-link>Muro</a>
+      <a href="#" class="pillcta" data-scroll-page="contacto">Contacto</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ============ HOME ============ -->
+<div class="page active" id="page-home">
+  <section class="home-hero">
+    <div class="hh-text">
+      <span class="hand">Bienvenida, bienvenido</span>
+      <h1>Está bien no estar bien. Empieza por aquí.</h1>
+      <p>Este lugar lo hizo alguien que también tuvo que aprender a pedir ayuda. Pasa, siéntate, lee o respira un rato. Aquí nadie te apura.</p>
+      <div class="hh-btns"><a href="#audios" class="btn btn-primary" data-link>Respirar un minuto</a><a href="#ayuda" class="btn btn-ghost" data-link>Necesito hablar con alguien</a></div>
+      <span class="hand small">Sin registro. Sin juicios. A tu ritmo.</span><br>
+      <a href="#" class="textlink" id="discoverBtn">Ver qué encontrarás aquí ↓</a>
+    </div>
+    <div class="hh-art"><svg viewBox="0 0 480 420" role="img" aria-label="Una ventana con luz cálida, una planta y una taza humeante">
+<path d="M60 250C40 150 120 60 240 56s190 80 178 190c-8 80-90 130-178 132S76 330 60 250z" fill="#F4DFC4"/>
+<path d="M140 330V190a100 100 0 0 1 200 0v140z" fill="#FFE5B4" stroke="#3B2F2A" stroke-width="5" stroke-linejoin="round"/>
+<path d="M240 92v238M140 205h200" stroke="#3B2F2A" stroke-width="4" fill="none"/>
+<path d="M142 332V200c26 6 40 40 34 84-4 28-12 40-34 48z" fill="#7C9A7E" stroke="#3B2F2A" stroke-width="4" stroke-linejoin="round"/>
+<rect x="118" y="330" width="244" height="16" rx="6" fill="#B9784F" stroke="#3B2F2A" stroke-width="4"/>
+<path d="M176 300h46l-6 30h-34z" fill="#B4562E" stroke="#3B2F2A" stroke-width="4" stroke-linejoin="round"/>
+<path d="M199 300c-2-30-8-50-26-64M199 300c4-24 14-40 34-52M199 300c0-22 0-38 4-60" stroke="#3B2F2A" stroke-width="4" fill="none" stroke-linecap="round"/>
+<ellipse cx="170" cy="234" rx="18" ry="9" transform="rotate(-35 170 234)" fill="#7C9A7E" stroke="#3B2F2A" stroke-width="3"/>
+<ellipse cx="236" cy="246" rx="18" ry="9" transform="rotate(35 236 246)" fill="#7C9A7E" stroke="#3B2F2A" stroke-width="3"/>
+<ellipse cx="204" cy="232" rx="9" ry="18" fill="#7C9A7E" stroke="#3B2F2A" stroke-width="3"/>
+<path d="M292 296h40v26a8 8 0 0 1-8 8h-24a8 8 0 0 1-8-8z" fill="#FBF6EE" stroke="#3B2F2A" stroke-width="4" stroke-linejoin="round"/>
+<path d="M332 303c16 0 16 20 0 20" fill="none" stroke="#3B2F2A" stroke-width="4"/>
+<path d="M302 282c-6-8 6-14 0-22M318 282c-6-8 6-14 0-22" stroke="#B9784F" stroke-width="3" fill="none" stroke-linecap="round"/>
+<path d="M70 372c60-10 120 8 180 0s120-10 170 2" stroke="#3B2F2A" stroke-width="4" fill="none" stroke-linecap="round"/>
+</svg></div>
+  </section>
+
+  <section class="section" id="primer-paso">
+    <div class="head"><span class="eyebrow2">Tu primer paso</span><h2>Puede ser muy pequeño</h2></div>
+    <div class="steps3">
+      <a href="#audios" data-link class="fs"><b>1</b><h3>Respira un minuto</h3><p>Un audio corto que te acompaña, sin que tengas que hacer nada bien.</p></a>
+      <a href="#blog" data-link class="fs"><b>2</b><h3>Lee algo que acompañe</h3><p>Textos cortos de alguien que ya pasó por ahí.</p></a>
+      <a href="#muro" data-link class="fs"><b>3</b><h3>Cuéntalo sin que te juzguen</h3><p>Escribe de forma anónima en el muro de la comunidad.</p></a>
+    </div>
+  </section>
+
+  <section class="breathe" aria-label="Un momento para respirar" style="background:#FFFBF4;">
+    <div class="orb" role="img" aria-label="Círculo que se expande y se contrae para guiar la respiración"><span>Inhala</span><span>Exhala</span></div>
+    <p>Antes de seguir, tómate un momento. Respira con el círculo: aquí no hay prisa ni nada que hacer bien.</p>
+  </section>
+
+  <section class='section' id='para-ti'>
+    <div class='head'><span class='eyebrow2'>Pasa, siéntate</span><h2>Vengas como vengas, aquí cabes</h2></div>
+    <div class='cards4'>
+      <div class='card svc'><div class='ic'></div><h3>Estás pasando un momento difícil</h3><p>No tienes que explicarlo todo. Aquí puedes empezar por leer, respirar y tomarte tu tiempo.</p></div>
+      <div class='card svc'><div class='ic'></div><h3>Acompañas a alguien que quieres</h3><p>Cuidar también cansa. Encuentra ideas para escuchar sin juzgar y para cuidarte tú.</p></div>
+      <div class='card svc'><div class='ic'></div><h3>Quieres cuidarte antes del límite</h3><p>Pequeñas prácticas de relajación, escritura y autoconocimiento para el día a día.</p></div>
+      <div class='card svc'><div class='ic'></div><h3>Solo necesitas que alguien te escuche</h3><p>Nuestra comunidad es un lugar para compartir a tu ritmo, o simplemente para acompañar.</p></div>
+    </div>
+    <div class='helpstrip'><p><strong>¿Necesitas ayuda ahora mismo?</strong> No tienes que esperar. Hay personas disponibles para escucharte.</p><a href='#ayuda' data-link class='btn btn-primary'>Ver líneas de ayuda</a></div>
+  </section>
+
+  <section class="section" id="servicios-home">
+    <div class="head"><span class="eyebrow2">Qué hacemos</span><h2>Cuatro formas de acompañarte</h2></div>
+    <div class="cards4">
+      <div class="card svc"><div class="ic"></div><h3>Apoyo emocional</h3><p>Un ancla que te sostiene mientras exploras tus emociones.</p></div>
+      <div class="card svc"><div class="ic"></div><h3>Técnicas de relajación</h3><p>Prácticas sencillas para una vida más serena y equilibrada.</p></div>
+      <div class="card svc"><div class="ic"></div><h3>Exploración creativa</h3><p>Actividades para encontrar nuevas perspectivas y soltar tensiones.</p></div>
+      <div class="card svc"><div class="ic"></div><h3>Recursos</h3><p>Guías y herramientas prácticas sobre salud mental.</p></div>
+    </div>
+    <div style="text-align:center;margin-top:36px;"><a href="#servicios" data-link class="btn btn-ghost">Ver todos los servicios</a></div>
+  </section>
+
+  <section class='section' id='faq'>
+    <div class='head'><span class='eyebrow2'>Preguntas frecuentes</span><h2>Lo que quizá te estás preguntando</h2></div>
+    <details class='faq'><summary>¿Portal Epifanía reemplaza la terapia o la atención médica?</summary><p>No. Acompañamos y compartimos psicoeducación, pero no diagnosticamos ni tratamos. Si sientes que lo necesitas, te animamos a buscar a un profesional de la salud.</p></details>
+    <details class='faq'><summary>¿Necesito registrarme para leer el contenido?</summary><p>No. El blog, los servicios y las páginas informativas son de acceso libre. El registro solo es necesario para participar en la comunidad.</p></details>
+    <details class='faq'><summary>¿Qué pasa con mis datos?</summary><p>Solo pedimos lo necesario (nombre y correo) y lo usamos únicamente para responderte o darte acceso a la comunidad. No pedimos información clínica. Puedes leer nuestra <a href='#privacidad'>política de privacidad</a>.</p></details>
+    <details class='faq'><summary>¿Tiene algún costo?</summary><p>Leer el contenido y participar en la comunidad es gratis.</p></details>
+    <details class='faq'><summary>¿Qué hago si estoy en una crisis?</summary><p>Si estás en peligro o piensas en hacerte daño, llama al 123 o consulta las <a href='#ayuda'>líneas de ayuda</a>. No tienes que pasar por esto solo ni sola.</p></details>
+  </section>
+
+  <section class="community">
+    <h2>¿Quieres conocer más?</h2>
+    <p>Descubre nuestra historia, explora el blog o únete a la comunidad.</p>
+    <a href="#sobre-nosotros" class="btn btn-primary" data-link>Conoce Portal Epifanía</a>
+  </section>
+
+  <section class="contact" id="contacto">
+    <div class="contact-grid">
+      <div class="head" style="margin-bottom:34px;"><span class="eyebrow2">Contacto</span><h2>Hablemos</h2></div>
+      <form id="contactForm">
+        <div class="field"><label for="nombre">Nombre</label><input id="nombre" name="nombre" autocomplete="name" required></div>
+        <div class="field"><label for="correo">Correo electrónico</label><input id="correo" name="email" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="mensaje">Mensaje</label><textarea id="mensaje" name="mensaje" required></textarea></div>
+        <button type="submit" class="btn btn-primary" style="width:100%;">Enviar mensaje</button>
+        <p class="note">Tu mensaje llegará directamente a nuestro equipo. Portal Epifanía es un espacio de acompañamiento y psicoeducación; no sustituye la valoración de un profesional de la salud mental.</p>
+      </form>
+      <div id="confirm"><h3>Gracias por escribirnos 🧡</h3><p>Recibimos tu mensaje y te responderemos lo antes posible.</p></div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ SOBRE NOSOTROS ============ -->
+<div class="page" id="page-sobre-nosotros">
+  <section class="pagehead">
+    <span class="eyebrow">Sobre nosotros</span>
+    <h1>Un proyecto que nació de la oscuridad, para devolver la luz</h1>
+    <p>Portal Epifanía no nació en una oficina, sino desde el corazón de una batalla personal.</p>
+  </section>
+  <section class="section">
+    <div class="cards3">
+      <div class="card"><span class="badge">Silencio</span><h3>Una batalla personal</h3>
+        <p style="font-size:14px;color:var(--ash);">Este proyecto nace de la vivencia real de su fundadora, quien atravesó un diagnóstico de depresión crónica. El silencio y el descuido involuntario de su salud mental terminaron cobrando una factura muy alta.</p></div>
+      <div class="card"><span class="badge">Quietud</span><h3>La verdadera epifanía</h3>
+        <p style="font-size:14px;color:var(--ash);">Fue en ese punto de quietud donde ocurrió la verdadera epifanía: comprender que la mente y el cuerpo están íntimamente conectados, y que pedir ayuda es el acto más valiente que existe.</p></div>
+      <div class="card"><span class="badge">Luz</span><h3>De vuelta al bienestar</h3>
+        <p style="font-size:14px;color:var(--ash);">Gracias al amor incondicional y el soporte de su familia, el camino de regreso hacia el bienestar fue posible. Este portal nace de esa gratitud.</p></div>
+    </div>
+    <p class="quote">"Creamos este espacio para que tu historia no tenga que llegar al límite."</p>
+    <div class="founder">
+      <div class="ava">DP</div>
+      <div><h4>Dania Carolina Padilla Pereira</h4>
+        <p>Fundadora y desarrolladora de Portal Epifanía. Diseña y construye cada parte del portal con el mismo cuidado con el que le hubiera gustado encontrarlo.</p></div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ MISIÓN Y VISIÓN ============ -->
+<div class="page" id="page-mision-vision">
+  <section class="pagehead">
+    <span class="eyebrow">Misión y visión</span>
+    <h1>Hacia dónde caminamos</h1>
+    <p>Los principios que guían cada decisión dentro de Portal Epifanía.</p>
+  </section>
+  <section class="section">
+    <div class="cards2">
+      <div class="card"><span class="badge">Misión</span>
+        <p>Proporcionar un espacio digital seguro, compasivo y accesible dedicado al cuidado de la salud mental y el bienestar emocional. Nos enfocamos en derribar los estigmas del sufrimiento psíquico a través de herramientas prácticas de psicoeducación, el fomento del amor propio y el poder de la comunidad.</p></div>
+      <div class="card"><span class="badge">Visión</span>
+        <p>Ser la plataforma digital líder y el referente más confiable en habla hispana para el acompañamiento de la salud mental. Nos proyectamos como una comunidad global donde el estigma emocional sea reemplazado por la empatía y la resiliencia.</p></div>
+    </div>
+  </section>
+  <section class="section" style="padding-top:0;">
+    <div class="head"><span class="eyebrow2">Nuestros valores</span><h2>Lo que nos sostiene</h2></div>
+    <div class="cards3">
+      <div class="card"><span class="badge">Calidez</span><h3>Lenguaje cercano</h3><p style="font-size:14px;color:var(--ash);">Hablamos de salud mental sin tecnicismos ni frialdad clínica, como lo haría alguien que ya pasó por ahí.</p></div>
+      <div class="card"><span class="badge">Accesibilidad</span><h3>Para todas las personas</h3><p style="font-size:14px;color:var(--ash);">Un portal claro, sencillo de navegar y gratuito en su contenido esencial.</p></div>
+      <div class="card"><span class="badge">Responsabilidad</span><h3>Cuidado ético</h3><p style="font-size:14px;color:var(--ash);">Protegemos la privacidad de quienes nos escriben y dejamos claro que acompañamos, no reemplazamos la ayuda profesional.</p></div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ SERVICIOS (detallado) ============ -->
+<div class="page" id="page-servicios">
+  <section class="pagehead">
+    <span class="eyebrow">Servicios</span>
+    <h1>Cuatro caminos de acompañamiento</h1>
+    <p>Cada eje está pensado como una puerta distinta de entrada; puedes recorrerlos todos o solo el que necesitas hoy.</p>
+  </section>
+  <section class="section">
+    <div class="cards2">
+      <div class="card svc"><div class="ic"></div><h3>Apoyo emocional</h3>
+        <p style="font-size:14px;color:var(--ash);">Un ancla que te sostiene mientras exploras lo que sientes y desarrollas herramientas para afrontar cualquier situación, sin juicios.</p>
+        <ul><li>Artículos sobre gestión emocional cotidiana</li><li>Ejercicios breves de autoconocimiento</li><li>Orientación sobre cuándo buscar ayuda profesional</li></ul></div>
+      <div class="card svc"><div class="ic"></div><h3>Técnicas de relajación</h3>
+        <p style="font-size:14px;color:var(--ash);">Prácticas sencillas para navegar las demandas de la vida de forma más serena, aun en medio del ruido diario.</p>
+        <ul><li>Respiración consciente guiada</li><li>Pausas activas de 3 a 5 minutos</li><li>Rutinas breves para bajar la activación del cuerpo</li></ul></div>
+      <div class="card svc"><div class="ic"></div><h3>Exploración creativa</h3>
+        <p style="font-size:14px;color:var(--ash);">Actividades que ayudan a encontrar nuevas perspectivas, soltar tensiones y promover el crecimiento personal.</p>
+        <ul><li>Journaling y escritura libre</li><li>Prompts creativos semanales</li><li>Espacio sin exigencia de "hacerlo bien"</li></ul></div>
+      <div class="card svc"><div class="ic"></div><h3>Recursos</h3>
+        <p style="font-size:14px;color:var(--ash);">Guías, artículos y herramientas prácticas sobre salud mental y técnicas de meditación, listas para consultar cuando las necesites.</p>
+        <ul><li>Guías descargables de psicoeducación</li><li>Glosario de términos de salud mental</li><li>Directorio orientativo de líneas de ayuda</li></ul></div>
+    </div>
+    <div style="text-align:center;margin-top:40px;"><a href="#" data-scroll-page="contacto" class="btn btn-primary">Hablemos de tu caso</a></div>
+  </section>
+</div>
+
+<!-- ============ MULTIMEDIA (hub) ============ -->
+<div class="page" id="page-multimedia">
+  <section class="pagehead">
+    <span class="eyebrow">Multimedia</span>
+    <h1>Contenido para acompañar tu proceso</h1>
+    <p>Artículos, audios guiados e infografías breves de psicoeducación.</p>
+  </section>
+  <section class="section">
+    <div class="cards3">
+      <div class="card"><span class="badge" style="background:var(--cobalt);">Disponible</span><h3>Blog</h3><p style="font-size:14px;color:var(--ash);">Artículos breves sobre apoyo emocional, relajación y exploración creativa.</p>
+        <a href="#blog" data-link class="btn btn-ghost" style="margin-top:16px;padding:9px 18px;font-size:13px;">Ver blog</a></div>
+      <div class="card"><span class="badge" style="background:var(--cobalt);">Disponible</span><h3>Audios guiados</h3><p style="font-size:14px;color:var(--ash);">Respiración, anclaje y relajación del cuerpo, narrados con calma.</p><a href="#audios" data-link class="btn btn-ghost" style="margin-top:16px;padding:9px 18px;font-size:13px;">Escuchar</a></div>
+      <div class="card"><span class="badge" style="background:var(--cobalt);">Disponible</span><h3>Infografías</h3><p style="font-size:14px;color:var(--ash);">Piezas visuales con psicoeducación fácil de compartir y recordar.</p><a href="#infografias" data-link class="btn btn-ghost" style="margin-top:16px;padding:9px 18px;font-size:13px;">Ver infografías</a></div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ BLOG ============ -->
+<div class="page" id="page-blog">
+  <section class="pagehead">
+    <span class="eyebrow">Blog</span>
+    <h1>Lecturas para acompañar tu camino</h1>
+    <p>Textos breves, pensados para leerse con calma.</p>
+  </section>
+  <section class="section">
+    <div class="posts">
+      <div class="post"><div class="ph"></div><div class="pc"><span class="cat">Apoyo emocional</span><h4>Pedir ayuda es un acto de valentía</h4>
+        <p>Muchas veces esperamos a tocar fondo para buscar apoyo, como si pedir ayuda fuera una señal de debilidad. Es exactamente lo contrario: reconocer que algo nos sobrepasa y buscar acompañamiento es una de las decisiones más valientes que podemos tomar. Aquí te contamos cómo dar ese primer paso, sin prisa y sin culpa.</p></div></div>
+
+      <div class="post"><div class="ph"></div><div class="pc"><span class="cat">Relajación</span><h4>Tres minutos para volver al presente</h4>
+        <p>Cuando la ansiedad se activa, el cuerpo suele llegar antes que la mente. Esta técnica breve de respiración —inhalar en 4 tiempos, sostener en 4, exhalar en 6— ayuda a bajar la activación física en minutos, sin necesidad de ningún equipo ni experiencia previa. Puedes practicarla donde estés.</p></div></div>
+
+      <div class="post"><div class="ph"></div><div class="pc"><span class="cat">Exploración creativa</span><h4>Escribir lo que no se dice en voz alta</h4>
+        <p>El journaling no busca producir un texto perfecto, sino darle un lugar a lo que normalmente guardamos. Escribir sin editar, sin pensar en quién lo va a leer, puede revelar patrones que no habíamos notado. Te compartimos tres preguntas sencillas para empezar hoy mismo.</p></div></div>
+
+      <div class="post"><div class="ph"></div><div class="pc"><span class="cat">Recursos</span><h4>Cuerpo y mente: una conexión real</h4>
+        <p>Dolores de cabeza recurrentes, tensión en los hombros, cansancio que no se explica solo con el sueño: a veces el cuerpo habla antes que nosotros reconozcamos lo que sentimos. Entender esta conexión es el primer paso para cuidarnos de forma integral, no solo síntoma por síntoma.</p></div></div>
+
+      <div class="post"><div class="ph"></div><div class="pc"><span class="cat">Comunidad</span><h4>No estás solo en esto</h4>
+        <p>Compartir lo que atravesamos con otras personas que entienden —sin explicaciones de más— puede aliviar un peso que llevábamos cargando en silencio. Te contamos cómo funciona nuestro espacio de comunidad y por qué lo construimos con normas claras de respeto y confidencialidad.</p></div></div>
+
+      <div class="post"><div class="ph"></div><div class="pc"><span class="cat">Apoyo emocional</span><h4>Silencio, quietud, luz</h4>
+        <p>La historia detrás del nombre de este portal: una experiencia personal con la depresión crónica, un punto de quietud donde todo cambió, y la comprensión de que la mente y el cuerpo están profundamente conectados. Así nació Portal Epifanía.</p></div></div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ COMUNIDAD ============ -->
+<div class="page" id="page-comunidad">
+  <section class="pagehead">
+    <span class="eyebrow">Comunidad</span>
+    <h1>Un espacio para no sentirte solo</h1>
+    <p>Comparte tu camino con otras personas que también están aprendiendo a cuidar su bienestar emocional.</p>
+  </section>
+  <section class="community" style="margin:0;">
+    <div class="steps">
+      <div class="step"><div class="n">01</div><h4>Regístrate</h4><p>Con tu nombre y correo, en un minuto.</p></div>
+      <div class="step"><div class="n">02</div><h4>Recibe la bienvenida</h4><p>Te escribimos para darte acceso al espacio.</p></div>
+      <div class="step"><div class="n">03</div><h4>Participa cuando quieras</h4><p>Comparte o solo acompaña, sin presión.</p></div>
+    </div>
+    <p class="quote">"Un espacio donde el estigma se reemplaza por empatía."</p>
+    <div style='text-align:center;margin:0 auto 26px;'><a href='#muro' class='btn btn-ghost' style='border-color:#F5EFE4;color:#F5EFE4;'>Ir al muro de la comunidad</a></div>
+    <form id='joinForm' class='joinform'><input id='jn' name='nombre' autocomplete='name' placeholder='Tu nombre' aria-label='Tu nombre' required><input id='jc' name='email' type='email' autocomplete='email' placeholder='Tu correo' aria-label='Tu correo' required><button type='submit' class='btn btn-primary'>Quiero unirme</button></form>
+    <p class='note' style='max-width:560px;margin:16px auto 0;'>Solo usamos tus datos para darte acceso a la comunidad. <a href='#privacidad' style='text-decoration:underline;'>Política de privacidad</a>.</p>
+  </section>
+  <section class="section">
+    <div class="head"><span class="eyebrow2">Normas de la comunidad</span><h2>Para que este espacio se sienta seguro</h2></div>
+    <div class="cards3">
+      <div class="card"><h3>Respeto ante todo</h3><p style="font-size:14px;color:var(--ash);">Ningún juicio. Cada historia merece escucharse con empatía.</p></div>
+      <div class="card"><h3>Confidencialidad</h3><p style="font-size:14px;color:var(--ash);">Lo que se comparte aquí, se queda aquí. Tus datos están protegidos conforme a la Ley 1581 de 2012.</p></div>
+      <div class="card"><h3>No reemplaza ayuda profesional</h3><p style="font-size:14px;color:var(--ash);">La comunidad acompaña; si necesitas apoyo clínico, te orientamos hacia profesionales.</p></div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ ARTÍCULOS ============ -->
+<div class='page' id='page-post-pedir-ayuda'>
+  <section class='pagehead'><span class='eyebrow'>Apoyo emocional · 4 min de lectura</span><h1>Pedir ayuda es un acto de valentía</h1></section>
+  <article class='article'>
+    <p class='lead'>Muchas veces esperamos a tocar fondo para buscar apoyo, como si pedir ayuda fuera una señal de debilidad. Es exactamente lo contrario.</p>
+    <p>Crecemos escuchando que hay que "aguantar", "ser fuertes" o "no preocupar a nadie". Así aprendemos a callar lo que sentimos, y el silencio, con el tiempo, pesa más que lo que intentábamos proteger. Reconocer que algo nos sobrepasa y buscar acompañamiento exige honestidad con uno mismo, y eso es valentía.</p>
+    <h2>Señales de que puede ser momento de pedir apoyo</h2>
+    <ul>
+      <li>Cambios en el sueño o el apetito que se sostienen por semanas.</li>
+      <li>Dificultad para concentrarte o disfrutar cosas que antes disfrutabas.</li>
+      <li>Sensación persistente de tristeza, vacío, irritabilidad o desesperanza.</li>
+      <li>Malestar que empieza a afectar tu trabajo, tus estudios o tus relaciones.</li>
+    </ul>
+    <p>No necesitas cumplir todas, ni esperar a que sea "suficientemente grave". Si algo te pesa, ya merece atención.</p>
+    <h2>Cómo dar el primer paso, sin prisa y sin culpa</h2>
+    <ol>
+      <li><strong>Ponle palabras.</strong> Escribe en un papel qué estás sintiendo y desde cuándo. No tiene que sonar bien.</li>
+      <li><strong>Elige a una persona de confianza.</strong> Basta con una: un familiar, una amiga, un docente. Decir "no me siento bien" ya es abrir la puerta.</li>
+      <li><strong>Busca acompañamiento profesional.</strong> Puedes empezar por tu servicio de salud o por servicios de psicología de tu institución o comunidad.</li>
+      <li><strong>Hazlo pequeño.</strong> No tienes que resolverlo todo hoy; solo tomar la siguiente acción posible.</li>
+    </ol>
+    <div class='aside'><p>Si sientes que estás en peligro o que podrías hacerte daño, comunícate de inmediato con una línea de ayuda local, un servicio de urgencias o una persona cercana que pueda acompañarte ahora mismo. Portal Epifanía acompaña y orienta, pero no sustituye la atención profesional.</p></div>
+    <div class='endnav'><a href='#blog' class='btn btn-ghost'>← Volver al blog</a><a href='#post-tres-minutos' class='btn btn-ghost'>Siguiente: Tres minutos para volver al presente →</a></div>
+  </article>
+</div>
+
+<div class='page' id='page-post-tres-minutos'>
+  <section class='pagehead'><span class='eyebrow'>Relajación · 3 min de lectura</span><h1>Tres minutos para volver al presente</h1></section>
+  <article class='article'>
+    <p class='lead'>Cuando la ansiedad se activa, el cuerpo suele llegar antes que la mente. Esta práctica breve te ayuda a bajar la intensidad sin equipo ni experiencia previa.</p>
+    <p>Ante el estrés, el cuerpo acelera la respiración y el corazón. Respirar de forma lenta y alargar la exhalación le envía una señal contraria: puedes bajar el ritmo. No elimina la causa de lo que sientes, pero te devuelve un poco de espacio para pensar.</p>
+    <h2>Paso a paso (3 minutos)</h2>
+    <ol>
+      <li><strong>Siéntate con los pies apoyados</strong> en el suelo y los hombros sueltos. Si puedes, cierra los ojos o baja la mirada.</li>
+      <li><strong>Inhala por la nariz</strong> contando 4 tiempos.</li>
+      <li><strong>Sostén el aire</strong> suavemente durante 4 tiempos.</li>
+      <li><strong>Exhala despacio por la boca</strong> durante 6 tiempos, como si empañaras un vidrio.</li>
+      <li><strong>Repite durante unos 3 minutos.</strong> Si te mareas o el conteo te incomoda, respira de forma natural y vuelve a intentarlo más tarde.</li>
+    </ol>
+    <h2>Para anclarte al presente</h2>
+    <p>Cuando termines, mira a tu alrededor y nombra mentalmente 5 cosas que ves, 4 que puedes tocar y 3 que escuchas. Este ejercicio sencillo lleva la atención de los pensamientos al entorno inmediato.</p>
+    <h2>Consejos para que funcione</h2>
+    <ul>
+      <li>Practícala también en días tranquilos: es más fácil recurrir a ella cuando ya la conoces.</li>
+      <li>No busques "relajarte perfecto"; basta con notar un pequeño cambio.</li>
+      <li>Puedes hacerla en el transporte, antes de una reunión o antes de dormir.</li>
+    </ul>
+    <div class='aside'><p>Esta técnica es un recurso de autocuidado, no un tratamiento. Si la ansiedad o las crisis de pánico son frecuentes o interfieren con tu vida, consulta con un profesional de la salud.</p></div>
+    <div class='endnav'><a href='#blog' class='btn btn-ghost'>← Volver al blog</a><a href='#post-escribir' class='btn btn-ghost'>Siguiente: Escribir lo que no se dice en voz alta →</a></div>
+  </article>
+</div>
+
+<div class='page' id='page-post-escribir'>
+  <section class='pagehead'><span class='eyebrow'>Exploración creativa · 4 min de lectura</span><h1>Escribir lo que no se dice en voz alta</h1></section>
+  <article class='article'>
+    <p class='lead'>El journaling no busca producir un texto perfecto, sino darle un lugar a lo que normalmente guardamos.</p>
+    <p>Hay cosas que no sabemos cómo decir, o a quién. Escribirlas, sin editar y sin pensar en quién las va a leer, cambia su forma: lo que era una nube de pensamientos se convierte en frases que podemos mirar desde afuera. A veces, solo con verlo escrito, empezamos a entenderlo.</p>
+    <h2>Tres reglas para empezar</h2>
+    <ul>
+      <li><strong>Diez minutos bastan.</strong> Pon un temporizador y escribe sin parar.</li>
+      <li><strong>Sin corregir.</strong> La ortografía y el estilo no importan; nadie va a evaluarte.</li>
+      <li><strong>Es tuyo.</strong> Puedes guardarlo, romperlo o borrarlo. Escribirlo ya cumplió su función.</li>
+    </ul>
+    <h2>Tres preguntas para hoy</h2>
+    <ol>
+      <li>¿Qué estoy sintiendo ahora mismo y en qué parte del cuerpo lo noto?</li>
+      <li>¿Qué no me he permitido decir esta semana?</li>
+      <li>¿Qué le diría a una amiga que sintiera exactamente lo mismo que yo?</li>
+    </ol>
+    <p>La tercera pregunta suele sorprender: solemos ser mucho más amables con los demás que con nosotros mismos. Prueba a escribirte esa carta con el mismo tono.</p>
+    <h2>Si no sabes por dónde empezar</h2>
+    <p>Empieza con una frase incompleta y termínala sin pensar: "Hoy me pesa…", "Lo que más necesito es…", "Me gustaría que supieran que…". Cuando termines, relee una sola vez y fíjate si algo se repite.</p>
+    <div class='aside'><p>La escritura es una herramienta de autoconocimiento y no reemplaza un proceso terapéutico. Si al escribir aparecen emociones muy intensas o recuerdos dolorosos, considera compartirlos con un profesional o con alguien de confianza.</p></div>
+    <div class='endnav'><a href='#blog' class='btn btn-ghost'>← Volver al blog</a><a href='#post-cuerpo-mente' class='btn btn-ghost'>Siguiente: Cuerpo y mente: una conexión real →</a></div>
+  </article>
+</div>
+
+<div class='page' id='page-post-cuerpo-mente'>
+  <section class='pagehead'><span class='eyebrow'>Recursos · 4 min de lectura</span><h1>Cuerpo y mente: una conexión real</h1></section>
+  <article class='article'>
+    <p class='lead'>A veces el cuerpo habla antes de que reconozcamos lo que sentimos.</p>
+    <p>Dolores de cabeza recurrentes, tensión en los hombros, molestias digestivas, cansancio que no se explica solo con el sueño: son síntomas físicos que pueden tener muchas causas, y entre ellas puede estar el estrés sostenido o la carga emocional. Mente y cuerpo no funcionan por separado; lo que vivimos emocionalmente se refleja en cómo duermen, comen y se mueven nuestros cuerpos.</p>
+    <h2>Señales físicas que vale la pena escuchar</h2>
+    <ul>
+      <li>Tensión muscular constante en cuello, mandíbula o espalda.</li>
+      <li>Alteraciones del sueño: dificultad para dormir o despertarse agotada.</li>
+      <li>Cambios en el apetito o molestias digestivas sin causa clara.</li>
+      <li>Palpitaciones o sensación de opresión en momentos de preocupación.</li>
+    </ul>
+    <h2>Qué puedes hacer</h2>
+    <ol>
+      <li><strong>Consulta con un profesional de la salud.</strong> Ante cualquier síntoma físico, lo primero es descartar causas médicas.</li>
+      <li><strong>Lleva un registro sencillo.</strong> Anota cuándo aparece el síntoma y qué estaba pasando ese día. Los patrones suelen ser reveladores.</li>
+      <li><strong>Cuida lo básico:</strong> dormir lo suficiente, moverte un poco cada día, comer con regularidad y hacer pausas.</li>
+      <li><strong>Escucha lo emocional.</strong> Pregúntate qué cargas ahora y a quién podrías contárselo.</li>
+    </ol>
+    <p>Cuidar la salud de forma integral significa no tratar el cuerpo y la mente como compartimentos separados, sino como un solo sistema que merece atención completa.</p>
+    <div class='aside'><p>Este contenido es informativo y no constituye diagnóstico. Ante síntomas físicos persistentes o preocupantes, acude siempre a valoración médica.</p></div>
+    <div class='endnav'><a href='#blog' class='btn btn-ghost'>← Volver al blog</a><a href='#post-no-estas-solo' class='btn btn-ghost'>Siguiente: No estás solo en esto →</a></div>
+  </article>
+</div>
+
+<div class='page' id='page-post-no-estas-solo'>
+  <section class='pagehead'><span class='eyebrow'>Comunidad · 3 min de lectura</span><h1>No estás solo en esto</h1></section>
+  <article class='article'>
+    <p class='lead'>Compartir lo que atravesamos con quienes entienden, sin explicaciones de más, puede aliviar un peso que cargábamos en silencio.</p>
+    <p>Cuando sentimos que nadie más pasa por lo mismo, el malestar se agranda. Escuchar a otras personas decir con sus palabras lo que nosotros no sabíamos nombrar tiene un efecto simple y poderoso: nos recuerda que no somos un caso aislado ni "el único que no puede".</p>
+    <h2>Cómo funciona nuestra comunidad</h2>
+    <ol>
+      <li><strong>Te registras</strong> con tu nombre y un correo electrónico.</li>
+      <li><strong>Exploras los foros</strong> a tu ritmo. Puedes limitarte a leer todo el tiempo que necesites.</li>
+      <li><strong>Participas cuando quieras:</strong> compartir, responder o simplemente acompañar con un mensaje amable.</li>
+    </ol>
+    <h2>Un espacio con normas claras</h2>
+    <ul>
+      <li><strong>Respeto ante todo:</strong> ningún juicio ni comparación entre experiencias.</li>
+      <li><strong>Confidencialidad:</strong> lo que se comparte allí se queda allí. El tratamiento de los datos se rige por la Ley 1581 de 2012.</li>
+      <li><strong>Acompañar, no diagnosticar:</strong> nadie en la comunidad reemplaza a un profesional.</li>
+    </ul>
+    <div class='aside'><p>La comunidad es un espacio de apoyo entre personas y no un servicio clínico. Si necesitas ayuda profesional o te encuentras en una situación de crisis, busca atención especializada o una línea de ayuda local.</p></div>
+    <div class='endnav'><a href='#blog' class='btn btn-ghost'>← Volver al blog</a><a href='#comunidad' class='btn btn-primary'>Conocer la comunidad</a></div>
+  </article>
+</div>
+
+<div class='page' id='page-post-silencio-quietud-luz'>
+  <section class='pagehead'><span class='eyebrow'>Apoyo emocional · 4 min de lectura</span><h1>Silencio, quietud, luz</h1></section>
+  <article class='article'>
+    <p class='lead'>La historia detrás del nombre de este portal.</p>
+    <h2>Silencio</h2>
+    <p>Portal Epifanía no nació en una oficina, sino desde el corazón de una batalla personal. Su fundadora atravesó un diagnóstico de depresión crónica. Durante mucho tiempo, el silencio y el descuido involuntario de su propia salud mental terminaron cobrando una factura muy alta, afectando también su salud física.</p>
+    <h2>Quietud</h2>
+    <p>Fue en ese punto de quietud donde ocurrió la verdadera epifanía: comprender que la mente y el cuerpo están íntimamente conectados, y que pedir ayuda es el acto más valiente que existe. No fue un momento espectacular; fue una pausa en la que algo se aclaró.</p>
+    <h2>Luz</h2>
+    <p>Gracias al amor incondicional, la paciencia y el soporte de su familia, el camino de regreso hacia el bienestar fue posible. Este portal nace de esa gratitud y de la necesidad de transformar el dolor en propósito.</p>
+    <p>Creamos este espacio para que tu historia no tenga que llegar al límite; para recordarte que tu salud integral importa y que, con la red de apoyo adecuada, siempre es posible salir adelante.</p>
+    <div class='endnav'><a href='#blog' class='btn btn-ghost'>← Volver al blog</a><a href='#sobre-nosotros' class='btn btn-ghost'>Conoce más sobre nosotros</a></div>
+  </article>
+</div>
+
+<!-- ============ AUDIOS ============ -->
+<div class='page' id='page-audios'>
+  <section class='pagehead'><span class='eyebrow'>Multimedia</span><h1>Audios guiados para hacer una pausa</h1><p>Ejercicios breves narrados con calma. Busca un lugar cómodo y, si quieres, cierra los ojos.</p></section>
+  <section class='section'>
+    <div class='cards3'>
+      <div class='card aud' data-ej='respira'><span class='badge'>2 min</span><h3>Respiración 4-4-6</h3><p style='font-size:14px;color:var(--ash);'>Para bajar la activación del cuerpo cuando sientes ansiedad o prisa.</p><button type='button' class='btn btn-primary play'>▶ Empezar</button><div class='st' aria-live='polite'></div><details><summary>Leer el texto</summary><div class='txt'></div></details></div>
+      <div class='card aud' data-ej='ancla'><span class='badge'>2 min</span><h3>Anclaje 5-4-3-2-1</h3><p style='font-size:14px;color:var(--ash);'>Para volver al presente con ayuda de tus cinco sentidos.</p><button type='button' class='btn btn-primary play'>▶ Empezar</button><div class='st' aria-live='polite'></div><details><summary>Leer el texto</summary><div class='txt'></div></details></div>
+      <div class='card aud' data-ej='cuerpo'><span class='badge'>3 min</span><h3>Relajación del cuerpo</h3><p style='font-size:14px;color:var(--ash);'>Un recorrido suave para soltar la tensión, de la cabeza a los pies.</p><button type='button' class='btn btn-primary play'>▶ Empezar</button><div class='st' aria-live='polite'></div><details><summary>Leer el texto</summary><div class='txt'></div></details></div>
+    </div>
+    <p class='note' style='max-width:720px;margin:28px auto 0;text-align:center;'>La voz la genera tu dispositivo, por lo que puede sonar distinta según tu navegador. Si algún ejercicio te incomoda o te marea, detente y respira con normalidad. Estos ejercicios acompañan, no sustituyen la atención profesional.</p>
+    <div class='endnav' style='justify-content:center;'><a href='#multimedia' class='btn btn-ghost'>← Volver a multimedia</a></div>
+  </section>
+</div>
+
+<!-- ============ INFOGRAFÍAS ============ -->
+<div class='page' id='page-infografias'>
+  <section class='pagehead'><span class='eyebrow'>Multimedia</span><h1>Infografías para recordar y compartir</h1><p>Ideas sencillas de psicoeducación, pensadas para leerse de un vistazo.</p></section>
+  <section class='section'>
+    <div class='cards2'>
+      <div class='card ig'><h3>Respiración 4-4-6</h3><p class='sub'>Una técnica breve que puedes hacer donde estés.</p>
+        <div class='orbs'><div class='orb2'><b>4</b><span>Inhala</span></div><div class='orb2'><b>4</b><span>Sostén</span></div><div class='orb2'><b>6</b><span>Exhala</span></div></div>
+        <p class='foot'>Repite 5 veces, contando en silencio. Inhala por la nariz y exhala despacio por la boca.</p></div>
+      <div class='card ig'><h3>Anclaje 5-4-3-2-1</h3><p class='sub'>Para volver al presente con tus sentidos.</p>
+        <div class='row'><span class='num'>5</span><span>cosas que puedes <strong>ver</strong></span></div>
+        <div class='row'><span class='num'>4</span><span>cosas que puedes <strong>tocar</strong></span></div>
+        <div class='row'><span class='num'>3</span><span>sonidos que puedes <strong>escuchar</strong></span></div>
+        <div class='row'><span class='num'>2</span><span>olores que puedes <strong>percibir</strong></span></div>
+        <div class='row'><span class='num'>1</span><span>sabor que puedes <strong>notar</strong></span></div></div>
+      <div class='card ig'><h3>¿Es momento de pedir apoyo?</h3><p class='sub'>Algunas señales que merecen atención, sin esperar a que sea "suficientemente grave".</p>
+        <div class='row'><span class='num'>1</span><span>Cambios en el sueño o el apetito durante semanas</span></div>
+        <div class='row'><span class='num'>2</span><span>Dificultad para concentrarte o disfrutar</span></div>
+        <div class='row'><span class='num'>3</span><span>Tristeza, vacío o irritabilidad que no se va</span></div>
+        <div class='row'><span class='num'>4</span><span>Malestar que afecta tu trabajo, estudio o relaciones</span></div>
+        <p class='foot'>Si algo te pesa, ya merece atención. Habla con alguien de confianza o con un profesional.</p></div>
+      <div class='card ig'><h3>Cuando el cuerpo habla</h3><p class='sub'>A veces el cuerpo expresa lo que sentimos antes de que lo notemos.</p>
+        <div class='chips'><span class='chip'>Dolores de cabeza</span><span class='chip'>Tensión en los hombros</span><span class='chip'>Cansancio constante</span><span class='chip'>Sueño alterado</span><span class='chip'>Malestar en el estómago</span><span class='chip'>Opresión en el pecho</span></div>
+        <p class='foot'>Estas señales pueden tener muchas causas. Si se repiten, consulta a un profesional de la salud.</p></div>
+    </div>
+    <div class='helpstrip'><p><strong>¿Necesitas ayuda ahora mismo?</strong> Hay personas disponibles para escucharte.</p><a href='#ayuda' data-link class='btn btn-primary'>Ver líneas de ayuda</a></div>
+    <div class='endnav' style='justify-content:center;'><a href='#multimedia' class='btn btn-ghost'>← Volver a multimedia</a></div>
+  </section>
+</div>
+
+<!-- ============ MURO ============ -->
+<div class='page' id='page-muro'>
+  <section class='pagehead'><span class='eyebrow'>Muro de la comunidad</span><h1>Un lugar para desahogarte y ser escuchado</h1><p>Comparte lo que sientes de forma anónima. Cada mensaje se revisa antes de publicarse.</p></section>
+  <section class='section'><div class='muro'>
+    <div class='card'><h3>Para cuidarnos entre todos</h3>
+      <ul><li>Escribe con respeto, empatía y solidaridad. Aquí nadie se juzga.</li><li>No compartas nombres reales, teléfonos, direcciones ni datos de otras personas.</li><li>No describas métodos de hacerse daño ni des consejos médicos o de medicación.</li><li>Sin insultos, discriminación, burlas ni publicidad.</li><li>Los mensajes que no cumplan estas normas no se publican.</li></ul></div>
+    <div id='muroCrisis' role='alert'><strong>Lo que escribes importa, y tú también.</strong> Si estás en peligro o piensas en hacerte daño, llama ahora al <a href='tel:123'>123</a> o a la <a href='tel:192'>línea 192, opción 4</a>. Hay personas que quieren escucharte. Tu mensaje también llegará a nuestro equipo.</div>
+    <div id='muroOk'><h3 style='font-size:20px;margin-bottom:8px;'>Gracias por compartir 🧡</h3><p style='color:var(--ash);font-size:15px;'>Tu mensaje será revisado antes de publicarse. Puede tardar un tiempo.</p></div>
+    <form id='muroForm' class='card'>
+      <div class='field'><label for='mSeud'>Tu seudónimo (no uses tu nombre real)</label><input id='mSeud' maxlength='30' minlength='2' autocomplete='off' required></div>
+      <div class='field'><label for='mTexto'>Cuéntanos cómo te sientes</label><textarea id='mTexto' maxlength='1000' minlength='10' required></textarea><div class='cnt'><span id='mCnt'>0</span>/1000</div></div>
+      <input class='hp' id='mHp' tabindex='-1' autocomplete='off' aria-hidden='true'>
+      <label class='chk'><input type='checkbox' id='mAcepto' required><span>Soy mayor de edad, acepto las normas y que mi mensaje sea revisado antes de publicarse. <a href='#privacidad' style='text-decoration:underline;'>Privacidad</a>.</span></label>
+      <button type='submit' class='btn btn-primary' style='width:100%;'>Compartir mi mensaje</button>
+      <p class='note' id='mErr' role='alert' style='color:#A23B2A;display:none;'></p>
+    </form>
+    <div class='head' style='margin:44px auto 24px;'><span class='eyebrow2'>Mensajes de la comunidad</span><h2 style='font-size:28px;'>Lo que otras personas han compartido</h2></div>
+    <div id='muroLista' aria-live='polite'><p class='muro-vacio'>Cargando…</p></div>
+  </div></section>
+</div>
+
+<!-- ============ AYUDA ============ -->
+<div class='page' id='page-ayuda'>
+  <section class='pagehead'><span class='eyebrow'>Necesito ayuda ahora</span><h1>No tienes que pasar por esto solo ni sola</h1><p>Si estás en peligro o sientes que podrías hacerte daño, busca ayuda ahora. Estas líneas son gratuitas y están pensadas para escucharte.</p></section>
+  <section class='section'>
+    <div class='cards3'>
+      <div class='card'><span class='badge'>Emergencias</span><h3>Línea única de emergencias</h3><a class='tel' href='tel:123'>123</a><p style='font-size:14px;color:var(--ash);'>Si estás en peligro inmediato o ante una crisis de salud mental, esta es la línea a la que puedes llamar desde cualquier lugar del país.</p></div>
+      <div class='card'><span class='badge'>Salud mental</span><h3>Línea 192, opción 4</h3><a class='tel' href='tel:192'>192</a><p style='font-size:14px;color:var(--ash);'>Teleorientación en salud mental del Ministerio de Salud y Protección Social. Marca 192 y elige la opción 4.</p></div>
+      <div class='card'><span class='badge'>Niñas, niños y adolescentes</span><h3>Línea 141 (ICBF)</h3><a class='tel' href='tel:141'>141</a><p style='font-size:14px;color:var(--ash);'>Línea gratuita nacional para la protección de niñas, niños y adolescentes.</p></div>
+    </div>
+  </section>
+  <section class='section' style='padding-top:0;'>
+    <article class='article' style='padding-top:0;'>
+      <h2>Mientras llega la ayuda</h2>
+      <ul><li>Evita quedarte a solas: busca a una persona de confianza o ve a un lugar con gente.</li><li>Aleja de ti cualquier objeto con el que podrías hacerte daño.</li><li>Respira despacio: inhala contando 4 y exhala contando 6.</li><li>Recuerda que lo que sientes ahora puede cambiar, y que pedir ayuda es un acto de valentía.</li></ul>
+      <div class='aside'><p>Las líneas disponibles pueden variar según tu región. También puedes consultar a tu EPS o a la secretaría de salud de tu departamento. Portal Epifanía es un espacio de acompañamiento y no atiende urgencias.</p></div>
+    </article>
+  </section>
+</div>
+
+<!-- ============ PRIVACIDAD ============ -->
+<div class='page' id='page-privacidad'>
+  <section class='pagehead'><span class='eyebrow'>Política de privacidad</span><h1>Cuidamos tus datos como cuidamos tu confianza</h1></section>
+  <article class='article'>
+    <p class='lead'>Esta política explica qué datos personales recogemos en Portal Epifanía, para qué los usamos y cuáles son tus derechos, conforme a la Ley 1581 de 2012.</p>
+    <h2>Responsable del tratamiento</h2>
+    <p>Portal Epifanía. Correo de contacto: portalepifania07@gmail.com.</p>
+    <h2>Qué datos recogemos</h2>
+    <ul><li>Nombre y correo electrónico, cuando nos escribes por el formulario de contacto.</li><li>Nombre y correo electrónico, cuando solicitas unirte a la comunidad.</li></ul>
+    <p>No solicitamos información clínica, diagnósticos ni datos de salud. Te pedimos no incluirlos en tus mensajes.</p>
+    <h2>Muro de la comunidad</h2>
+    <p>Si compartes un mensaje en el muro, guardamos tu seudónimo y el texto que escribas para revisarlo y, si cumple las normas, publicarlo. Te pedimos no incluir nombres reales ni datos de otras personas. Puedes pedir que retiremos tu mensaje escribiendo a portalepifania07@gmail.com. El muro es solo para personas mayores de edad.</p>
+    <h2>Para qué los usamos</h2>
+    <ul><li>Responder tus mensajes.</li><li>Darte acceso al espacio de comunidad.</li></ul>
+    <p>No vendemos ni compartimos tus datos con terceros con fines comerciales.</p>
+    <h2>Cuánto tiempo los conservamos</h2>
+    <p>Mientras mantengas contacto con nosotros. Los datos de personas sin actividad durante más de doce meses se eliminan.</p>
+    <h2>Tus derechos</h2>
+    <p>Puedes conocer, actualizar y rectificar tus datos, solicitar su supresión o revocar tu autorización en cualquier momento escribiéndonos a portalepifania07@gmail.com.</p>
+    <div class='aside'><p>Portal Epifanía es un espacio de acompañamiento y psicoeducación. No sustituye la atención de un profesional de la salud mental.</p></div>
+    <div class='endnav'><a href='#home' class='btn btn-ghost'>← Volver al inicio</a></div>
+  </article>
+</div>
+
+<a class='helpfab' href='#ayuda' data-link>Necesito ayuda ahora</a>
+
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">Portal Epifanía</div>
+    <div class="foot-links">
+      <a href="#home" data-link>Inicio</a><a href="#sobre-nosotros" data-link>Sobre nosotros</a>
+      <a href="#servicios" data-link>Servicios</a><a href="#blog" data-link>Blog</a><a href="#comunidad" data-link>Comunidad</a>
+      <a href="#" data-scroll-page="contacto">Contacto</a><a href="#ayuda" data-link>Necesito ayuda</a><a href="#privacidad" data-link>Privacidad</a>
+    </div>
+  </div>
+  <p class="disclaimer">© 2026 Portal Epifanía · portalepifania07@gmail.com. Espacio de acompañamiento y psicoeducación en salud mental para población hispanohablante. No sustituye la atención profesional. Si estás en crisis, por favor contacta a una línea de ayuda local o a un profesional de la salud mental.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script>
+  var VIEWS = ['home','sobre-nosotros','mision-vision','servicios','multimedia','blog','comunidad','muro','audios','infografias','post-pedir-ayuda','post-tres-minutos','post-escribir','post-cuerpo-mente','post-no-estas-solo','post-silencio-quietud-luz','ayuda','privacidad'];
+  function syncAyuda(){ document.body.classList.toggle('on-ayuda', location.hash === '#ayuda'); }
+  window.addEventListener('hashchange', syncAyuda); syncAyuda();
+
+  // Cada tarjeta del blog abre su propia página de artículo
+  var POSTS = {
+    'Pedir ayuda es un acto de valentía':'post-pedir-ayuda',
+    'Tres minutos para volver al presente':'post-tres-minutos',
+    'Escribir lo que no se dice en voz alta':'post-escribir',
+    'Cuerpo y mente: una conexión real':'post-cuerpo-mente',
+    'No estás solo en esto':'post-no-estas-solo',
+    'Silencio, quietud, luz':'post-silencio-quietud-luz'
+  };
+  document.querySelectorAll('.post').forEach(function(p){
+    var t = p.querySelector('h4').textContent.trim();
+    var slug = POSTS[t];
+    if (!slug) return;
+    p.style.cursor = 'pointer';
+    var l = document.createElement('a');
+    l.href = '#' + slug;
+    l.className = 'readmore';
+    l.textContent = 'Leer artículo →';
+    p.querySelector('.pc').appendChild(l);
+    p.addEventListener('click', function(){ location.hash = slug; });
+  });
+
+  function showView(){
+    var hash = location.hash.replace('#','') || 'home';
+    if (VIEWS.indexOf(hash) === -1) hash = 'home';
+    VIEWS.forEach(function(v){
+      var el = document.getElementById('page-' + v);
+      if (el) el.classList.toggle('active', v === hash);
+    });
+    window.scrollTo(0,0);
+  }
+  window.addEventListener('hashchange', showView);
+  showView();
+
+  document.getElementById('menuBtn').addEventListener('click', function(){
+    document.getElementById('navlinks').classList.toggle('open');
+  });
+  document.querySelectorAll('.navlinks a').forEach(function(a){
+    a.addEventListener('click', function(){ document.getElementById('navlinks').classList.remove('open'); });
+  });
+
+  document.querySelectorAll('[data-scroll-page]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      location.hash = 'home';
+      setTimeout(function(){
+        var el = document.getElementById(a.getAttribute('data-scroll-page'));
+        if (el) el.scrollIntoView({behavior:'smooth'});
+      }, 60);
+    });
+  });
+
+  document.getElementById('discoverBtn').addEventListener('click', function(e){
+    e.preventDefault();
+    document.getElementById('servicios-home').scrollIntoView({behavior:'smooth'});
+  });
+
+  // ===== FORMSPREE: pega aquí tu endpoint (https://formspree.io/f/xxxxxxxx) =====
+  var FORMSPREE_URL = 'https://formspree.io/f/mnpdjzpg';
+  var CORREO = 'portalepifania07@gmail.com';
+
+  function enviar(form, datos, asunto, alExito){
+    var btn = form.querySelector('button[type=submit]'), txt = btn.textContent;
+    var mailto = function(){
+      location.href = 'mailto:' + CORREO + '?subject=' + encodeURIComponent(asunto) + '&body=' + encodeURIComponent(JSON.stringify(datos,null,1));
+      alExito();
+    };
+    if (FORMSPREE_URL.indexOf('TU_ID_AQUI') > -1) { mailto(); return; }
+    btn.disabled = true; btn.textContent = 'Enviando…';
+    datos._subject = asunto;
+    fetch(FORMSPREE_URL, {method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body:JSON.stringify(datos)})
+      .then(function(res){ if(!res.ok) throw new Error(); alExito(); })
+      .catch(function(){ btn.disabled = false; btn.textContent = txt;
+        var m = form.querySelector('.err') || form.appendChild(Object.assign(document.createElement('p'),{className:'note err',role:'alert'}));
+        m.textContent = 'No pudimos enviar tu mensaje. Inténtalo de nuevo o escríbenos a ' + CORREO + '.'; });
+  }
+
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var f = this, d = {nombre:nombre.value, email:correo.value, mensaje:mensaje.value};
+    enviar(f, d, 'Mensaje desde Portal Epifanía — ' + d.nombre, function(){
+      f.style.display = 'none'; document.getElementById('confirm').style.display = 'block';
+    });
+  });
+  document.getElementById('joinForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var f = this, d = {nombre:jn.value, email:jc.value, solicitud:'Quiero unirme a la comunidad'};
+    enviar(f, d, 'Quiero unirme a la comunidad — ' + d.nombre, function(){
+      f.innerHTML = '<p style="color:#F5EFE4;font-size:17px;text-align:center;width:100%;">Gracias, ' + d.nombre.replace(/[<>&]/g,'') + ' 🧡 Recibimos tu solicitud y te escribiremos pronto.</p>';
+    });
+  });
+
+  // ===== MURO DE LA COMUNIDAD (Supabase) =====
+  var SB_URL='https://nfrpbhxjxvopfawysmiw.supabase.co', SB_KEY='sb_publishable__rdwSoy_jropPScvqSbuUA_6c1CXbGV';
+  var sb = (window.supabase && window.supabase.createClient) ? window.supabase.createClient(SB_URL, SB_KEY) : null;
+  var $ = function(id){ return document.getElementById(id); };
+  function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+  function lsSet(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+  function norm(s){ return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
+  var CRISIS = /suicid|quitarme la vida|matarme|no quiero vivir|hacerme dano|acabar con (mi vida|todo)|quiero morir|morirme|autolesion|cortarme/;
+
+  function cargarMuro(){
+    var lista = $('muroLista');
+    if(!sb){ lista.innerHTML = '<p class="muro-vacio">El muro no está disponible en este momento.</p>'; return; }
+    sb.from('mensajes').select('id,seudonimo,mensaje,created_at').eq('estado','aprobado').order('created_at',{ascending:false}).limit(50)
+      .then(function(res){
+        lista.innerHTML = '';
+        if(res.error){ lista.innerHTML = '<p class="muro-vacio">No pudimos cargar los mensajes. Inténtalo más tarde.</p>'; return; }
+        if(!res.data.length){ lista.innerHTML = '<p class="muro-vacio">Aún no hay mensajes publicados. Tu voz puede ser la primera.</p>'; return; }
+        var rep = {}; try{ rep = JSON.parse(lsGet('muro_rep')||'{}'); }catch(e){}
+        res.data.forEach(function(m){
+          var box = document.createElement('div'); box.className = 'msg';
+          var p = document.createElement('p'); p.textContent = m.mensaje;
+          var meta = document.createElement('div'); meta.className = 'meta';
+          var who = document.createElement('span');
+          var st = document.createElement('strong'); st.textContent = m.seudonimo;
+          who.appendChild(st); who.appendChild(document.createTextNode(' · ' + new Date(m.created_at).toLocaleDateString('es-CO',{day:'numeric',month:'long',year:'numeric'})));
+          var b = document.createElement('button'); b.type = 'button';
+          b.textContent = rep[m.id] ? 'Reportado' : 'Reportar'; b.disabled = !!rep[m.id];
+          b.addEventListener('click', function(){
+            b.disabled = true; b.textContent = 'Reportado'; rep[m.id] = 1; lsSet('muro_rep', JSON.stringify(rep));
+            sb.rpc('reportar',{p_id:m.id});
+          });
+          meta.appendChild(who); meta.appendChild(b);
+          box.appendChild(p); box.appendChild(meta); lista.appendChild(box);
+        });
+      });
+  }
+  function onMuro(){ if(location.hash === '#muro') cargarMuro(); }
+  window.addEventListener('hashchange', onMuro); onMuro();
+
+  $('mTexto').addEventListener('input', function(){
+    $('mCnt').textContent = this.value.length;
+    $('muroCrisis').style.display = CRISIS.test(norm(this.value)) ? 'block' : 'none';
+  });
+  $('muroForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var f = this, err = $('mErr'), btn = f.querySelector('button[type=submit]');
+    err.style.display = 'none';
+    function fallo(t){ err.textContent = t; err.style.display = 'block'; btn.disabled = false; btn.textContent = 'Compartir mi mensaje'; }
+    if($('mHp').value) return;
+    if(!sb) return fallo('El muro no está disponible en este momento.');
+    var last = parseInt(lsGet('muro_ts')||'0',10);
+    if(Date.now() - last < 120000) return fallo('Por favor espera un par de minutos antes de enviar otro mensaje.');
+    var seud = $('mSeud').value.trim(), texto = $('mTexto').value.trim();
+    if(seud.length < 2 || texto.length < 10) return fallo('Escribe un seudónimo y un mensaje un poco más largo.');
+    if(/\S+@\S+\.\S+|https?:\/\/|\b\d{7,}\b/.test(texto + ' ' + seud)) return fallo('Por tu seguridad, no incluyas correos, enlaces ni números de teléfono.');
+    var alerta = CRISIS.test(norm(texto));
+    btn.disabled = true; btn.textContent = 'Enviando…';
+    sb.from('mensajes').insert({seudonimo:seud, mensaje:texto, alerta:alerta}).then(function(res){
+      if(res.error) return fallo('No pudimos enviar tu mensaje. Inténtalo de nuevo en unos minutos.');
+      lsSet('muro_ts', String(Date.now()));
+      f.reset(); $('mCnt').textContent = '0';
+      $('muroOk').style.display = 'block'; btn.disabled = false; btn.textContent = 'Compartir mi mensaje';
+      $('muroOk').scrollIntoView({behavior:'smooth',block:'center'});
+    });
+  });
+
+  // ===== AUDIOS GUIADOS (voz del dispositivo) =====
+  var EJ = {
+    respira: (function(){
+      var s=[['Siéntate cómodo y suelta los hombros. Vamos a respirar juntos.',3000]];
+      for(var i=0;i<5;i++){ s.push(['Inhala por la nariz',4000],['Sostén el aire',4000],['Exhala despacio por la boca',6000]); }
+      s.push(['Muy bien. Nota cómo se siente tu cuerpo ahora. Puedes volver aquí cuando quieras.',0]); return s; })(),
+    ancla: [['Respira profundo. Vamos a volver al presente con tus sentidos.',3000],['Mira a tu alrededor y nombra en silencio cinco cosas que puedas ver.',12000],['Ahora, cuatro cosas que puedas tocar. Siente su textura.',12000],['Tres sonidos que escuches, cerca o lejos.',10000],['Dos olores que percibas, o que te gusten.',8000],['Y una cosa que puedas saborear.',6000],['Respira profundo. Estás aquí, y en este momento estás a salvo.',0]],
+    cuerpo: [['Siéntate o recuéstate con comodidad. Cierra los ojos si quieres.',4000],['Lleva tu atención a la frente. Suéltala, deja que se relaje.',8000],['Afloja la mandíbula. Separa un poco los dientes.',8000],['Baja los hombros, lejos de las orejas.',8000],['Abre las manos y deja que descansen.',8000],['Siente tu abdomen subir y bajar con cada respiración.',10000],['Suelta las piernas y los pies. Todo el cuerpo se apoya.',10000],['Respira una vez más, profundo. Cuando estés listo, abre los ojos despacio.',0]]
+  };
+  var synth = window.speechSynthesis, activo = null, timer = null, safety = null;
+  function detener(){
+    try{ if(synth) synth.cancel(); }catch(e){}
+    clearTimeout(timer); clearTimeout(safety); activo = null;
+    document.querySelectorAll('.aud').forEach(function(c){ c.querySelector('.play').textContent = '▶ Empezar'; c.querySelector('.st').textContent = ''; });
+  }
+  document.querySelectorAll('.aud').forEach(function(card){
+    var id = card.getAttribute('data-ej'), segs = EJ[id], btn = card.querySelector('.play'), st = card.querySelector('.st');
+    btn.textContent = '▶ Empezar';
+    segs.forEach(function(s){ var p = document.createElement('p'); p.textContent = s[0]; card.querySelector('.txt').appendChild(p); });
+    btn.addEventListener('click', function(){
+      if(activo === id){ detener(); return; }
+      detener(); activo = id; btn.textContent = '■ Detener';
+      var i = 0, sonido = !!(synth && window.SpeechSynthesisUtterance);
+      (function paso(){
+        if(activo !== id) return;
+        if(i >= segs.length){ detener(); st.textContent = 'Terminó el ejercicio. Gracias por darte este momento 🧡'; return; }
+        var texto = segs[i][0], pausa = segs[i][1], hecho = false; i++;
+        st.textContent = texto + (sonido ? '' : '  (sigue las instrucciones escritas)');
+        function sig(){ if(hecho || activo !== id) return; hecho = true; clearTimeout(safety); clearTimeout(timer); timer = setTimeout(paso, pausa); }
+        if(!sonido){ hecho = true; timer = setTimeout(paso, pausa + 2500); return; }
+        try{
+          var u = new SpeechSynthesisUtterance(texto); u.lang = 'es-ES'; u.rate = 0.85;
+          var v = synth.getVoices().filter(function(x){ return /^es/i.test(x.lang); })[0]; if(v) u.voice = v;
+          u.onend = sig; u.onerror = sig; synth.speak(u);
+          safety = setTimeout(sig, texto.length * 110 + 2500);
+        }catch(e){ hecho = true; timer = setTimeout(paso, pausa + 2500); }
+      })();
+    });
+  });
+  window.addEventListener('hashchange', detener);
+  window.addEventListener('pagehide', detener);
+  var mb = document.getElementById('menuBtn');
+  mb.setAttribute('aria-controls','navlinks'); mb.setAttribute('aria-expanded','false');
+  mb.addEventListener('click', function(){ mb.setAttribute('aria-expanded', document.getElementById('navlinks').classList.contains('open') ? 'true' : 'false'); });
+
+  var TITLES={'home':'Portal Epifanía — Acompañamiento en salud mental'};
+  function marcarNav(){
+    var hash=location.hash.replace('#','')||'home';
+    document.querySelectorAll('.navlinks a').forEach(function(a){
+      if(a.getAttribute('href')==='#'+hash){a.setAttribute('aria-current','page');}else{a.removeAttribute('aria-current');}
+    });
+    var el=document.getElementById('page-'+hash), h1=el&&el.querySelector('h1');
+    document.title=(hash==='home'||!h1)?TITLES.home:h1.textContent+' — Portal Epifanía';
+  }
+  window.addEventListener('hashchange',marcarNav); marcarNav();
+</script>
+</body>
+</html>
