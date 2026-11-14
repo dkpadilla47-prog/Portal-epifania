@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /encuesta
+
+Sitemap: https://portal-epifania.vercel.app/sitemap.xml
